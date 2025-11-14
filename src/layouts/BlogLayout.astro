@@ -1,0 +1,118 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  image?: string;
+  tags: string[];
+}
+
+const { title, description, pubDate, author, image, tags } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(pubDate);
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Breadcrumb */}
+      <nav class="mb-8">
+        <ol class="flex items-center gap-x-2 text-sm text-neutral-600">
+          <li><a href="/" class="hover:text-neutral-900 transition-colors">Home</a></li>
+          <li class="text-neutral-400">/</li>
+          <li><a href="/blog" class="hover:text-neutral-900 transition-colors">Blog</a></li>
+          <li class="text-neutral-400">/</li>
+          <li class="text-neutral-900 font-medium truncate">{title}</li>
+        </ol>
+      </nav>
+
+      {/* Header */}
+      <header class="mb-8">
+        {/* Tags */}
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags.map(tag => (
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Title */}
+        <h1 class="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl mb-4">
+          {title}
+        </h1>
+
+        {/* Description */}
+        <p class="text-lg text-neutral-600 mb-6">
+          {description}
+        </p>
+
+        {/* Meta */}
+        <div class="flex items-center gap-x-4 text-sm">
+          <div class="flex items-center gap-x-2">
+            <div class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-semibold">
+              {author.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <p class="font-medium text-neutral-900">{author}</p>
+              <time datetime={pubDate.toISOString()} class="text-neutral-500">
+                {formattedDate}
+              </time>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Featured Image */}
+      {image && (
+        <div class="mb-8 rounded-2xl overflow-hidden shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]">
+          <img
+            src={image}
+            alt={title}
+            class="w-full aspect-video object-cover"
+          />
+        </div>
+      )}
+
+      {/* Content */}
+      <div class="prose prose-lg prose-slate max-w-none">
+        <slot />
+      </div>
+
+      {/* Footer */}
+      <footer class="mt-12 pt-8 border-t border-neutral-200">
+        <div class="flex items-center justify-between">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-x-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+          </a>
+
+          <div class="flex items-center gap-x-2">
+            <span class="text-sm text-neutral-600">Share:</span>
+            <button
+              onclick="navigator.share({title: document.title, url: window.location.href})"
+              class="p-2 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+              aria-label="Share article"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

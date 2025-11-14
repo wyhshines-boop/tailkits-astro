@@ -27,6 +27,13 @@ import Navigation from '../components/Navigation.astro';
 
 <html lang="en">
 	<head>
+		<style>
+			html, body {
+				background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+				margin: 0;
+				padding: 0;
+			}
+		</style>
 		<SEO
 			title={title}
 			description={description}
@@ -76,6 +83,8 @@ import Navigation from '../components/Navigation.astro';
 			  class="absolute left-0 top-0 -z-20 h-full w-full object-cover"
 			  src="https://tailkits.com/ui/iframe/assets/img/bg-12.png"
 			  alt="Background image"
+			  loading="eager"
+			  decoding="async"
 			/>
 			<Banner />
 			<Navigation />

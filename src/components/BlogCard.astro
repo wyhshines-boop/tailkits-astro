@@ -1,0 +1,88 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  slug: string;
+  image?: string;
+  tags: string[];
+  featured?: boolean;
+}
+
+const { title, description, pubDate, author, slug, image, tags, featured } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+}).format(pubDate);
+---
+
+<article
+  class={`group relative overflow-hidden rounded-2xl backdrop-blur-md bg-white/95 border border-white/30 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] transition-all duration-300 hover:shadow-[0_8px_20px_0px_rgba(0,0,0,0.2)] hover:-translate-y-1 ${featured ? 'md:col-span-2' : ''}`}
+>
+  <a href={`/blog/${slug}`} class="block">
+    {image ? (
+      <div class="relative overflow-hidden aspect-video md:aspect-[2/1] bg-gradient-to-br from-blue-50 to-purple-50">
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        {featured && (
+          <div class="absolute top-4 left-4 bg-slate-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Featured
+          </div>
+        )}
+      </div>
+    ) : (
+      <div class="relative overflow-hidden aspect-video md:aspect-[2/1] bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+        <svg class="w-16 h-16 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        {featured && (
+          <div class="absolute top-4 left-4 bg-slate-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Featured
+          </div>
+        )}
+      </div>
+    )}
+
+    <div class="p-6">
+      {/* Tags */}
+      <div class="flex flex-wrap gap-2 mb-3">
+        {tags.slice(0, 3).map(tag => (
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Title */}
+      <h3 class="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+        {title}
+      </h3>
+
+      {/* Description */}
+      <p class="text-neutral-600 text-sm mb-4 line-clamp-2">
+        {description}
+      </p>
+
+      {/* Meta */}
+      <div class="flex items-center justify-between text-sm text-neutral-500">
+        <div class="flex items-center gap-x-2">
+          <div class="h-8 w-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white text-xs font-semibold">
+            {author.charAt(0).toUpperCase()}
+          </div>
+          <span class="font-medium text-neutral-700">{author}</span>
+        </div>
+        <time datetime={pubDate.toISOString()} class="text-xs">
+          {formattedDate}
+        </time>
+      </div>
+    </div>
+  </a>
+</article>
