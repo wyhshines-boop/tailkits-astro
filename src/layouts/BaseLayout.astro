@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { getLangFromUrl } from '../i18n/utils';
 
 export interface Props {
   title?: string;
@@ -10,7 +11,7 @@ export interface Props {
   nofollow?: boolean;
 }
 
-const { 
+const {
   title = "TailKits Astro - Modern Starter Theme",
   description = "A modern, beautiful Astro starter theme with Tailwind CSS. Perfect for building fast, responsive websites.",
   image = "/og-image.jpg",
@@ -19,14 +20,18 @@ const {
   nofollow = false
 } = Astro.props;
 
+// Get current language
+const lang = getLangFromUrl(Astro.url);
+
 // Import the global CSS file
 import '../styles/global.css';
 import Banner from '../components/Banner.astro';
 import Navigation from '../components/Navigation.astro';
 ---
 
-<html lang="en">
+<html lang={lang}>
 	<head>
+		<meta charset="UTF-8" />
 		<style>
 			html, body {
 				background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

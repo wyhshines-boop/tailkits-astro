@@ -1,0 +1,49 @@
+{
+  "nav.home": "Home",
+  "nav.blog": "Blog",
+  "nav.about": "About",
+  "nav.contact": "Contact",
+
+  "hero.badge": "Introducing TailKits Astro",
+  "hero.title": "Redefining SaaS Standards",
+  "hero.description": "Join the league of mavericks and push the boundaries of SaaS design with inspiring design resources",
+  "hero.learn_more": "Learn more",
+  "hero.try_free": "Try free",
+  "hero.try_days": "14 days",
+
+  "blog.title": "Blog",
+  "blog.description": "Explore the latest insights, tutorials, and best practices from the industry",
+  "blog.featured": "Featured Posts",
+  "blog.latest": "Latest Posts",
+  "blog.all_posts": "All Posts",
+  "blog.read_more": "Read more",
+  "blog.share": "Share",
+  "blog.author": "Author",
+  "blog.published": "Published on",
+  "blog.back_to_blog": "Back to Blog",
+  "blog.related_posts": "Related Posts",
+
+  "footer.description": "Building beautiful SaaS applications with TailKits",
+  "footer.product": "Product",
+  "footer.company": "Company",
+  "footer.resources": "Resources",
+  "footer.legal": "Legal",
+  "footer.features": "Features",
+  "footer.pricing": "Pricing",
+  "footer.about": "About Us",
+  "footer.careers": "Careers",
+  "footer.docs": "Documentation",
+  "footer.privacy": "Privacy Policy",
+  "footer.terms": "Terms of Service",
+
+  "cta.title": "Ready to get started?",
+  "cta.description": "Join thousands of companies already using our platform",
+  "cta.button": "Get Started",
+
+  "newsletter.title": "Subscribe to our newsletter",
+  "newsletter.description": "Get the latest updates, articles, and resources delivered to your inbox weekly",
+  "newsletter.placeholder": "Enter your email",
+  "newsletter.button": "Subscribe",
+
+  "language.switch": "Switch Language"
+}

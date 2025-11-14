@@ -1,0 +1,49 @@
+{
+  "nav.home": "首页",
+  "nav.blog": "博客",
+  "nav.about": "关于",
+  "nav.contact": "联系",
+
+  "hero.badge": "介绍 TailKits Astro",
+  "hero.title": "重新定义 SaaS 标准",
+  "hero.description": "加入创新者行列，通过鼓舞人心的设计资源突破 SaaS 设计的界限",
+  "hero.learn_more": "了解更多",
+  "hero.try_free": "免费试用",
+  "hero.try_days": "14 天",
+
+  "blog.title": "博客",
+  "blog.description": "探索最新的见解、教程和行业最佳实践",
+  "blog.featured": "精选文章",
+  "blog.latest": "最新文章",
+  "blog.all_posts": "所有文章",
+  "blog.read_more": "阅读更多",
+  "blog.share": "分享",
+  "blog.author": "作者",
+  "blog.published": "发布于",
+  "blog.back_to_blog": "返回博客",
+  "blog.related_posts": "相关文章",
+
+  "footer.description": "使用 TailKits 构建美丽的 SaaS 应用",
+  "footer.product": "产品",
+  "footer.company": "公司",
+  "footer.resources": "资源",
+  "footer.legal": "法律",
+  "footer.features": "功能",
+  "footer.pricing": "价格",
+  "footer.about": "关于我们",
+  "footer.careers": "职位",
+  "footer.docs": "文档",
+  "footer.privacy": "隐私政策",
+  "footer.terms": "服务条款",
+
+  "cta.title": "准备开始了吗？",
+  "cta.description": "立即加入数千家信任我们平台的公司",
+  "cta.button": "开始使用",
+
+  "newsletter.title": "订阅我们的新闻通讯",
+  "newsletter.description": "获取最新的更新、文章和资源，每周发送到您的收件箱",
+  "newsletter.placeholder": "输入您的电子邮件",
+  "newsletter.button": "订阅",
+
+  "language.switch": "切换语言"
+}

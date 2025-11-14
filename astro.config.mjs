@@ -7,6 +7,13 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://yourdomain.com', // Replace with your actual domain
+  i18n: {
+    defaultLocale: 'zh',
+    locales: ['zh', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    }
+  },
   integrations: [
     sitemap(),
     mdx(),

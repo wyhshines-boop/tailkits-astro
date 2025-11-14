@@ -1,11 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-// Get current language
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
 
 // Get all blog posts filtered by language and sort by date
 const allPosts = await getCollection('blog', ({ data }) => {
@@ -20,8 +23,8 @@ const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
 ---
 
 <BaseLayout
-  title={t('blog.title')}
-  description={t('blog.description')}
+  title="Blog - Insights & Tutorials"
+  description="Explore the latest insights, tutorials, and best practices from the industry."
 >
   <section class="pt-12 lg:pt-16 pb-12 lg:pb-16">
     <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col">
@@ -48,7 +51,7 @@ const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
         <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
-            aria-label={lang === 'zh' ? '显示所有文章' : 'Show all posts'}
+            aria-label="Show all posts"
             class="py-1 px-2.5 text-sm flex items-center justify-center font-medium shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] rounded-full whitespace-nowrap text-white bg-slate-900"
           >
             {lang === 'zh' ? '显示全部' : 'Show all'}
@@ -56,7 +59,7 @@ const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
           {allTags.slice(0, 4).map(tag => (
             <button
               type="button"
-              aria-label={`${lang === 'zh' ? '按' : 'Filter by'} ${tag}`}
+              aria-label={`Filter by ${tag}`}
               class="py-1 px-2.5 text-sm flex items-center justify-center font-medium shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] rounded-full whitespace-nowrap text-neutral-700 bg-white"
             >
               {tag}
@@ -69,7 +72,7 @@ const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
       >
         {sortedPosts.map(post => {
           const slug = post.slug.replace(/^(zh|en)\//, '');
-          const postUrl = `/blog/${slug}`;
+          const postUrl = lang === 'zh' ? `/blog/${slug}` : `/${lang}/blog/${slug}`;
 
           return (
             <article
@@ -119,7 +122,7 @@ const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))];
                     <div class="flex items-center gap-x-1">
                       <span class="h-1 w-1 rounded-full bg-neutral-200"></span>
                       <time class="text-sm font-medium text-neutral-500">
-                        {new Date(post.data.pubDate).toLocaleDateString('zh-CN', {
+                        {new Date(post.data.pubDate).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric'

@@ -1,5 +1,10 @@
 ---
 // Navigation component
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="sticky top-0 z-50 py-3 backdrop-blur-md border-b border-white/20">
@@ -18,9 +23,9 @@
 		  <li>
 			<a
 			  class="px-3 py-2 text-sm font-medium text-neutral-700 transition hover:text-neutral-600"
-			  href="#"
+			  href={getLocalizedPath('/', lang)}
 			>
-			  Features
+			  {t('nav.home')}
 			</a>
 		  </li>
 		  <li>
@@ -28,7 +33,7 @@
 			  class="px-3 py-2 text-sm font-medium text-neutral-700 transition hover:text-neutral-600"
 			  href="#"
 			>
-			  About
+			  {t('nav.about')}
 			</a>
 		  </li>
 
@@ -37,7 +42,7 @@
 			  class="flex items-center gap-x-1.5 px-3 py-2 text-sm font-medium text-neutral-700 transition hover:text-neutral-600"
 			  href="#"
 			>
-			  Contact
+			  {t('nav.contact')}
 			  <svg
 				class="h-4 text-neutral-500"
 				xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +62,9 @@
 		  <li>
 			<a
 			  class="px-3 py-2 text-sm font-medium text-neutral-700 transition hover:text-neutral-600"
-			  href="/blog"
+			  href={getLocalizedPath('/blog', lang)}
 			>
-			  Blog
+			  {t('nav.blog')}
 			</a>
 		  </li>
 		  <li>
@@ -83,20 +88,23 @@
 	  <div class="flex items-center gap-x-10 justify-self-end">
 		<span class="hidden h-4 w-[1px] bg-neutral-300 lg:block"></span>
 		<div class="flex items-center gap-x-3 lg:gap-x-2">
+		  <div class="hidden lg:block">
+			<LanguageSwitcher />
+		  </div>
 		  <a
 			href="#"
 			title="Log in"
 			class="items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] border border-neutral-100 bg-white text-neutral-700 hover:border-neutral-200 hover:bg-neutral-100 disabled:border-slate-900/5 disabled:bg-slate-50/30 disabled:text-slate-900/20 px-3 py-2 rounded-[0.625rem] hidden lg:flex"
 		  >
-			Log in
+			{lang === 'zh' ? '登录' : 'Log in'}
 		  </a>
 		  <a
 			href="#"
-			title="Try free"
+			title={t('hero.try_free')}
 			class="items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] bg-slate-900 text-white hover:bg-slate-800 disabled:bg-slate-900/30 disabled:text-slate-50/70 px-3 py-2 rounded-[0.625rem] flex"
 		  >
-			Try free
-			<span class="ml-1 text-slate-400"> - 14 days</span>
+			{t('hero.try_free')}
+			<span class="ml-1 text-slate-400"> - {t('hero.try_days')}</span>
 		  </a>
 		  <button
 			type="button"
@@ -135,14 +143,17 @@
 		 class="lg:hidden mt-3 mx-4 xl:mx-0 max-w-7xl mx-auto">
 	  <div class="backdrop-blur-md bg-white/95 border border-white/30 rounded-2xl py-4 px-4 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]">
 		<nav class="space-y-3">
-		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">Features</a>
-		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">About</a>
-		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">Contact</a>
-		  <a href="/blog" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">Blog</a>
+		  <a href={getLocalizedPath('/', lang)} class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">{t('nav.home')}</a>
+		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">{t('nav.about')}</a>
+		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">{t('nav.contact')}</a>
+		  <a href={getLocalizedPath('/blog', lang)} class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">{t('nav.blog')}</a>
 		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">Services</a>
 		  <a href="#" class="block px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-600 transition-colors">Pricing</a>
 		  <div class="pt-3 border-t border-neutral-200">
-			<a href="#" class="block w-full text-center px-3 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">Try free - 14 days</a>
+			<div class="mb-3">
+			  <LanguageSwitcher />
+			</div>
+			<a href="#" class="block w-full text-center px-3 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">{t('hero.try_free')} - {t('hero.try_days')}</a>
 		  </div>
 		</nav>
 	  </div>
