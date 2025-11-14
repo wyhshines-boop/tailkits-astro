@@ -1,10 +1,16 @@
 ---
-title: 'Getting Started with Astro: A Modern Web Framework'
-description: 'Learn how Astro combines the best of static site generation with modern web development practices to create lightning-fast websites.'
+title: 'Test: Getting Started with Astro: A Modern Web Framework'
+description: >-
+  Learn how Astro combines the best of static site generation with modern web
+  development practices to create lightning-fast websites.
 pubDate: 2024-01-15T00:00:00.000Z
-author: 'Sarah Chen'
-image: 'https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=1200&h=600&fit=crop'
-tags: ['Astro', 'Web Development', 'Tutorial']
+author: Sarah Chen
+image: >-
+  https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=1200&h=600&fit=crop
+tags:
+  - Astro
+  - Web Development
+  - Tutorial
 featured: true
 ---
 
@@ -25,10 +31,10 @@ Astro is a modern web framework designed for building **fast, content-focused we
 
 Astro excels in scenarios where performance and content are paramount:
 
-- **Marketing websites** - Landing pages that need to convert
-- **Blogs and documentation** - Content-heavy sites that benefit from fast loads
-- **E-commerce stores** - Product pages that need excellent SEO
-- **Corporate websites** - Professional sites with minimal interactivity
+* **Marketing websites** - Landing pages that need to convert
+* **Blogs and documentation** - Content-heavy sites that benefit from fast loads
+* **E-commerce stores** - Product pages that need excellent SEO
+* **Corporate websites** - Professional sites with minimal interactivity
 
 > "Astro helped us achieve a perfect 100 Lighthouse score and reduced our page load time by 70%." - Real developer testimonial
 
@@ -95,6 +101,6 @@ Astro represents a significant shift in how we think about web development. By p
 
 Whether you're building a simple blog or a complex marketing site, Astro provides the tools and flexibility you need to succeed. Give it a try on your next project!
 
----
+***
 
 *Have questions about Astro? Drop a comment below or reach out on Twitter.*

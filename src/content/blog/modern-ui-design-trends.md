@@ -1,10 +1,16 @@
 ---
-title: 'Modern UI Design Trends for 2024'
-description: 'Explore the latest UI design trends shaping the digital landscape and learn how to implement them in your projects.'
+title: Modern UI Design Trends for 2024
+description: >-
+  Explore the latest UI design trends shaping the digital landscape and learn
+  how to implement them in your projects.
 pubDate: 2024-01-05T00:00:00.000Z
-author: 'David Kim'
-image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop'
-tags: ['Design', 'UI/UX', 'Trends']
+author: David Kim
+image: >-
+  https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop
+tags:
+  - Design
+  - UI/UX
+  - Trends
 featured: true
 ---
 
@@ -28,19 +34,19 @@ This technique works beautifully for cards, navigation bars, and modal overlays.
 
 Large, expressive typography is taking center stage:
 
-- Use oversized headings to create impact
-- Experiment with variable fonts
-- Mix font weights for hierarchy
-- Don't be afraid of creative layouts
+* Use oversized headings to create impact
+* Experiment with variable fonts
+* Mix font weights for hierarchy
+* Don't be afraid of creative layouts
 
 ## 3. Micro-interactions
 
 Small animations that provide feedback and delight users:
 
-- Button hover effects
-- Loading states
-- Success confirmations
-- Scroll-triggered animations
+* Button hover effects
+* Loading states
+* Success confirmations
+* Scroll-triggered animations
 
 These subtle touches significantly improve user experience.
 
@@ -62,28 +68,28 @@ While pure neumorphism had accessibility issues, designers are now combining it 
 
 Dark mode is no longer optional:
 
-- Design for both light and dark themes from the start
-- Use CSS custom properties for easy theme switching
-- Ensure proper contrast in both modes
-- Test extensively in both themes
+* Design for both light and dark themes from the start
+* Use CSS custom properties for easy theme switching
+* Ensure proper contrast in both modes
+* Test extensively in both themes
 
 ## 6. 3D Elements and Illustrations
 
 Three-dimensional graphics are becoming more accessible:
 
-- 3D icons and illustrations
-- Interactive 3D models
-- Parallax scrolling effects
-- WebGL experiences
+* 3D icons and illustrations
+* Interactive 3D models
+* Parallax scrolling effects
+* WebGL experiences
 
 ## 7. Minimalist Navigation
 
 Simplified navigation patterns are gaining popularity:
 
-- Hidden hamburger menus
-- Bottom navigation bars on mobile
-- Mega menus for complex sites
-- Breadcrumb trails for context
+* Hidden hamburger menus
+* Bottom navigation bars on mobile
+* Mega menus for complex sites
+* Breadcrumb trails for context
 
 ## Implementation Tips
 
@@ -98,19 +104,19 @@ When adopting these trends, keep these principles in mind:
 
 While trends come and go, timeless design principles remain:
 
-- **Clarity** - Users should understand your interface immediately
-- **Consistency** - Maintain patterns throughout your product
-- **Feedback** - Users should always know what's happening
-- **Forgiveness** - Make it easy to undo mistakes
+* **Clarity** - Users should understand your interface immediately
+* **Consistency** - Maintain patterns throughout your product
+* **Feedback** - Users should always know what's happening
+* **Forgiveness** - Make it easy to undo mistakes
 
 ## Looking Ahead
 
 As web technologies continue to evolve, we can expect:
 
-- More AI-powered personalization
-- Advanced motion design capabilities
-- Better cross-platform consistency
-- Improved accessibility tools
+* More AI-powered personalization
+* Advanced motion design capabilities
+* Better cross-platform consistency
+* Improved accessibility tools
 
 ## Conclusion
 
