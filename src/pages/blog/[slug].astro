@@ -4,14 +4,14 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getLangFromUrl } from '../../i18n/utils';
 
 export async function getStaticPaths() {
-  // Only get Chinese blog posts for the default /blog/[slug] route
+  // Only get English blog posts for the default /blog/[slug] route
   const blogPosts = await getCollection('blog', ({ data }) => {
-    return data.lang === 'zh';
+    return data.lang === 'en';
   });
 
   return blogPosts.map(post => {
-    // Remove language prefix from slug (e.g., "zh/getting-started" -> "getting-started")
-    const slug = post.slug.replace(/^zh\//, '');
+    // Remove language prefix from slug (e.g., "en/getting-started" -> "getting-started")
+    const slug = post.slug.replace(/^en\//, '');
 
     return {
       params: { slug },

@@ -63,18 +63,29 @@ const otherLangPath = getLocalizedPath(basePath, otherLang);
     <div class="backdrop-blur-md bg-white/95 border border-white/30 rounded-xl shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] py-1">
       <a
         href={basePath}
-        class="flex items-center gap-x-2 px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
-        class:list={{ 'bg-neutral-50 font-medium': lang === 'zh' }}
-      >
-        <span>中文</span>
-      </a>
-      <a
-        href={`/en${basePath}`}
-        class="flex items-center gap-x-2 px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors"
+        class="flex items-center gap-x-2 px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors lang-switch-link"
         class:list={{ 'bg-neutral-50 font-medium': lang === 'en' }}
+        data-lang="en"
       >
         <span>English</span>
+      </a>
+      <a
+        href={`/zh${basePath}`}
+        class="flex items-center gap-x-2 px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 transition-colors lang-switch-link"
+        class:list={{ 'bg-neutral-50 font-medium': lang === 'zh' }}
+        data-lang="zh"
+      >
+        <span>中文</span>
       </a>
     </div>
   </div>
 </div>
+
+<script>
+  // Save user's manual language choice to prevent auto-redirect
+  document.querySelectorAll('.lang-switch-link').forEach(link => {
+    link.addEventListener('click', () => {
+      localStorage.setItem('yt-lang-choice', link.getAttribute('data-lang') || '');
+    });
+  });
+</script>

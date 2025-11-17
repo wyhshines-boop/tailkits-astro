@@ -2,13 +2,13 @@ import zh from './locales/zh.json';
 import en from './locales/en.json';
 
 export const languages = {
-  zh: 'zh',
   en: 'en',
+  zh: 'zh',
 } as const;
 
 export type Language = keyof typeof languages;
 
-export const defaultLang: Language = 'zh';
+export const defaultLang: Language = 'en';
 
 export const ui = {
   zh,

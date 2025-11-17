@@ -1,27 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
+import { getLangFromUrl } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
-  // Only get English blog posts for the /en/blog/[slug] route
+  // Only get Chinese blog posts for the default /blog/[slug] route
   const blogPosts = await getCollection('blog', ({ data }) => {
-    return data.lang === 'en';
+    return data.lang === 'zh';
   });
 
   return blogPosts.map(post => {
-    // Remove language prefix from slug (e.g., "en/war-in-the-belly" -> "war-in-the-belly")
-    const slug = post.slug.replace(/^en\//, '');
+    // Remove language prefix from slug (e.g., "zh/getting-started" -> "getting-started")
+    const slug = post.slug.replace(/^zh\//, '');
 
     return {
-      params: { lang: 'en', slug },
+      params: { slug },
       props: { post },
     };
   });
 }
 
 const { post } = Astro.props;
-const { lang } = Astro.params;
 const { Content } = await post.render();
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <BlogLayout

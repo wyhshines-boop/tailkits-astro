@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('terms.title')}
+  description={t('terms.description')}
+>
+  <section class="pt-24 pb-16">
+    <div class="max-w-4xl mx-auto px-4 xl:px-0">
+      <div class="backdrop-blur-md bg-white/95 border border-white/30 rounded-2xl p-8 lg:p-12 shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)]">
+        <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+          Yahao Translate 服务条款
+        </h1>
+        <p class="text-sm text-slate-600 mb-8">
+          最后更新日期：2025 年 11 月 30 日
+        </p>
+
+        <div class="prose prose-slate max-w-none">
+          <p class="text-base text-slate-700 mb-6">
+            欢迎使用 Yahao Translate（以下简称"本服务"）。本协议是您（"用户"）与我们之间的法律协议，请在使用本服务前仔细阅读。
+          </p>
+          <p class="text-base text-slate-700 mb-6">
+            使用或继续使用本服务，即表示您已阅读、理解并同意受以下条款约束。如果您不同意本条款，请停止使用本服务。
+          </p>
+
+          <h2>1. 服务内容</h2>
+          <p>
+            本服务是一个为 Shopify 商店提供 AI 翻译增强功能的浏览器插件，主要包括：
+          </p>
+          <ul>
+            <li>一键翻译 Shopify 语言内容</li>
+            <li>AI 翻译模型调用</li>
+            <li>用量统计</li>
+            <li>用户账户系统</li>
+            <li>订阅制或买断制服务（如适用）</li>
+          </ul>
+          <p>我们保留根据产品需求随时修改、扩展或删除功能的权利。</p>
+
+          <h2>2. 用户账户</h2>
+          
+          <h3 class="text-lg font-semibold text-slate-800 mt-4 mb-2">2.1 注册与登录</h3>
+          <p>用户可在插件界面创建账户，用于：</p>
+          <ul>
+            <li>同步用量</li>
+            <li>使用高级功能</li>
+            <li>管理订阅</li>
+          </ul>
+          <p>用户需保证提供的信息真实有效。</p>
+
+          <h3 class="text-lg font-semibold text-slate-800 mt-4 mb-2">2.2 账户安全</h3>
+          <p>
+            用户对其账户及登录凭证负全部责任。因用户自身原因导致的账户安全问题，本服务不承担责任。
+          </p>
+
+          <h2>3. 许可与使用限制</h2>
+          <p>我们授予您个人、非商业、不可转让、可撤销的使用许可。</p>
+          <p>您不得进行以下行为：</p>
+          <ul>
+            <li>尝试破解、反编译或逆向工程插件或服务</li>
+            <li>滥用翻译功能进行爬虫、批量处理、攻击模型或异常调用</li>
+            <li>非授权转售、转借、批量转发翻译结果</li>
+            <li>使用本服务处理违法、敏感或违规内容（色情、暴力、仇恨、欺诈等）</li>
+          </ul>
+          <p>如用户违反上述行为，我们可暂停或终止账户。</p>
+
+          <h2>4. 订阅与费用</h2>
+          <p>本服务可能提供：</p>
+          <ul>
+            <li>订阅制套餐（按月/按年）</li>
+            <li>用量计费</li>
+            <li>一次性买断服务</li>
+          </ul>
+          <p>我们可能会根据市场条件对价格进行调整，但会在变更前提前通知现有用户。</p>
+
+          <h2>5. 第三方服务</h2>
+          <p>本服务可能会调用以下模型服务商提供 AI 翻译能力：</p>
+          <ul>
+            <li>Open AI</li>
+            <li>阿里云百炼</li>
+            <li>智谱 AI</li>
+            <li>（未来可能增加其他服务商）</li>
+          </ul>
+          <p>您了解并同意：</p>
+          <ul>
+            <li>翻译文本将被提交给模型服务商处理</li>
+            <li>我们不会授权模型供应商使用您的数据训练广告或用户画像</li>
+            <li>第三方服务可能会根据其自身政策发生变动</li>
+          </ul>
+
+          <h2>6. 服务变更与中断</h2>
+          <p>我们可能因以下情况暂停或中断本服务：</p>
+          <ul>
+            <li>系统维护或升级</li>
+            <li>第三方模型服务故障</li>
+            <li>不可抗力（断电、网络波动、政策变化等）</li>
+            <li>用户违规滥用服务</li>
+          </ul>
+          <p>我们会尽力提前通知，但不保证服务随时可用。</p>
+
+          <h2>7. 免责声明</h2>
+          <p>您理解并同意：</p>
+          <ul>
+            <li>翻译结果由 AI 生成，可能不完全准确</li>
+            <li>我们不对翻译错误造成的任何损失承担责任</li>
+            <li>本服务按"现状"和"可用性"提供，不保证无错误或不间断</li>
+          </ul>
+
+          <h2>8. 责任限制</h2>
+          <p>在适用法律允许的最大范围内：</p>
+          <ul>
+            <li>我们的责任限于您已支付的最近 3 个月订阅费用</li>
+            <li>我们不对间接、偶发、业务损失、利润损失或数据损失承担责任</li>
+          </ul>
+
+          <h2>9. 用户数据与隐私</h2>
+          <p>
+            用户数据按照《隐私政策》处理。
+          </p>
+          <p>
+            若用户要求删除数据，可联系： 📧 <a href="mailto:support@yahaotranslate.com" class="text-blue-600 hover:underline">support@yahaotranslate.com</a>
+          </p>
+
+          <h2>10. 服务终止</h2>
+          <p>我们可能在以下情况下暂停或终止您的账户：</p>
+          <ul>
+            <li>严重滥用 API 或翻译资源</li>
+            <li>违反法规、政策或本协议</li>
+            <li>长期未使用账户（如适用）</li>
+          </ul>
+          <p>用户也可随时请求关闭账户。</p>
+
+          <h2>11. 法律适用</h2>
+          <p>本条款受用户所在地的适用法律约束。</p>
+
+          <h2>12. 联系方式</h2>
+          <p>若您对本条款有任何问题，请联系：</p>
+          <p class="text-lg">
+            📧 <a href="mailto:support@yahaotranslate.com" class="text-blue-600 hover:underline">support@yahaotranslate.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose p {
+    color: #475569;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: #475569;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+  }
+
+  .prose a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .prose a:hover {
+    text-decoration: underline;
+  }
+</style>

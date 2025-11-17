@@ -8,8 +8,8 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://yourdomain.com', // Replace with your actual domain
   i18n: {
-    defaultLocale: 'zh',
-    locales: ['zh', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
     routing: {
       prefixDefaultLocale: false,
     }

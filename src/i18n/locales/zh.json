@@ -35,6 +35,19 @@
   "footer.docs": "文档",
   "footer.privacy": "隐私政策",
   "footer.terms": "服务条款",
+  "footer.refund": "退款政策",
+
+  "privacy.title": "隐私政策",
+  "privacy.description": "了解我们如何收集、使用和保护您的个人信息",
+  "privacy.last_updated": "最后更新",
+
+  "terms.title": "服务条款",
+  "terms.description": "使用我们服务的条款和条件",
+  "terms.last_updated": "最后更新",
+
+  "refund.title": "退款政策",
+  "refund.description": "了解我们的退款政策和流程",
+  "refund.last_updated": "最后更新",
 
   "cta.title": "准备开始了吗？",
   "cta.description": "立即加入数千家信任我们平台的公司",

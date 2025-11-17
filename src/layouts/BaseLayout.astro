@@ -81,6 +81,41 @@ import Navigation from '../components/Navigation.astro';
 			}}
 		/>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script is:inline>
+			// Automatic language detection based on browser preferences
+			(function() {
+				// Only run on first visit (check if user has made a language choice)
+				const hasUserChoice = localStorage.getItem('yt-lang-choice');
+				if (hasUserChoice) return;
+
+				// Get current path and language
+				const path = window.location.pathname;
+
+				// Skip language detection for admin pages
+				if (path.startsWith('/admin')) return;
+
+				const isZhPage = path.startsWith('/zh');
+				const isEnPage = !isZhPage; // English is default (no prefix)
+
+				// Get browser language
+				const browserLang = navigator.language || navigator.userLanguage;
+				const prefersChinese = browserLang.toLowerCase().startsWith('zh');
+
+				// Redirect if needed
+				if (prefersChinese && isEnPage) {
+					// User prefers Chinese but on English page - redirect to Chinese
+					const newPath = '/zh' + (path === '/' ? '' : path);
+					window.location.replace(newPath);
+				} else if (!prefersChinese && isZhPage) {
+					// User prefers English but on Chinese page - redirect to English
+					const newPath = path.replace(/^\/zh/, '') || '/';
+					window.location.replace(newPath);
+				}
+
+				// Mark that auto-detection has been done (user can still switch manually)
+				sessionStorage.setItem('yt-lang-auto', 'true');
+			})();
+		</script>
 	</head>
 	<body class="text-gray-900">
 		<div class="relative min-h-screen">
