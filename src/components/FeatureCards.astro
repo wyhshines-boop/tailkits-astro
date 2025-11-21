@@ -1,0 +1,133 @@
+---
+import FeatureCard from './FeatureCard.astro';
+
+interface Card {
+  image: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  cards: Card[];
+  sectionTitle?: string;
+  sectionDescription?: string;
+}
+
+const { cards, sectionTitle, sectionDescription } = Astro.props;
+---
+
+<section class="bg-white py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 xl:px-0">
+    {sectionTitle && (
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-5xl font-bold bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-transparent mb-4">
+          {sectionTitle}
+        </h2>
+        {sectionDescription && (
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            {sectionDescription}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- Desktop: Grid layout -->
+    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {cards.map((card) => (
+        <FeatureCard
+          image={card.image}
+          title={card.title}
+          description={card.description}
+        />
+      ))}
+    </div>
+
+    <!-- Mobile: Scrollable carousel with scroll snap -->
+    <div class="sm:hidden relative">
+      <div class="carousel-container overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory flex gap-4 pb-4 -mx-4 px-4">
+        {cards.map((card) => (
+          <div class="snap-center w-[85vw] flex-shrink-0">
+            <FeatureCard
+              image={card.image}
+              title={card.title}
+              description={card.description}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Scroll indicators -->
+      <div class="flex justify-center gap-2 mt-6">
+        {cards.map((_, index) => (
+          <button
+            class="scroll-indicator w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"
+            data-index={index}
+            aria-label={`Go to card ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scroll-indicator.active {
+    background-color: rgb(51, 65, 85);
+    width: 2rem;
+  }
+</style>
+
+<script>
+  function initCarousel() {
+    const carousel = document.querySelector('.carousel-container');
+    const indicators = document.querySelectorAll('.scroll-indicator');
+
+    if (!carousel || indicators.length === 0) return;
+
+    const updateActiveIndicator = () => {
+      const scrollLeft = carousel.scrollLeft;
+      const cardWidth = carousel.scrollWidth / indicators.length;
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+
+      indicators.forEach((indicator, index) => {
+        if (index === activeIndex) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    };
+
+    // Update indicator on scroll
+    carousel.addEventListener('scroll', updateActiveIndicator);
+
+    // Click indicator to scroll to card
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        const cardWidth = carousel.scrollWidth / indicators.length;
+        carousel.scrollTo({
+          left: cardWidth * index,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Initialize first indicator as active
+    updateActiveIndicator();
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initCarousel);
+
+  // Re-initialize after page transitions (for SPAs)
+  document.addEventListener('astro:page-load', initCarousel);
+</script>

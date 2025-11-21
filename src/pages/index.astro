@@ -2,22 +2,49 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import LogoCloud from '../components/LogoCloud.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
 import Feature from '../components/Feature.astro';
+import FeatureCards from '../components/FeatureCards.astro';
 import Stats from '../components/Stats.astro';
-import HowItWorks from '../components/HowItWorks.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
 import Cta from '../components/Cta.astro';
 import Pricing from '../components/Pricing.astro';
+
+const featureCardsData = [
+	{
+		image: '/images/feature1.png',
+		title: 'One click vs. five steps',
+		description: 'Translate entire fields in seconds instead of copying, pasting, switching apps, and pasting again. Save up to 5x time per store daily.'
+	},
+	{
+		image: '/images/feature2.png',
+		title: 'Translator-Quality Translations',
+		description: 'Advanced AI delivers professional-grade accuracy that matches experienced translators—but instantly and at a fraction of the cost.'
+	},
+	{
+		image: '/images/feature3.png',
+		title: 'Go Global Faster',
+		description: 'Future-proof your store. Support 60+ languages means you are ready to expand whenever opportunity comes.'
+	}
+];
 ---
 
 <BaseLayout>
 	<Hero />
 	<LogoCloud />
-	<Feature />
+	<VideoPlayer
+		badge=""
+		title="Translate Entire Pages with One Click"
+		description="Auto-translate button intelligently detects all text items on the page and translates everything at once."
+		videoUrl="/videos/video-auto.mov"
+	/>
 	<Stats />
+	<FeatureCards
+		cards={featureCardsData}
+	/>
+	<Feature />
 	<Cta />
-	<HowItWorks />
 	<Testimonials />
 	<Pricing />
 	<Footer />

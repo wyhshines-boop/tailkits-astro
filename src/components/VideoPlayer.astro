@@ -1,0 +1,146 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+}
+
+const { badge, title, description, videoUrl } = Astro.props;
+---
+
+<section class="bg-white pt-12 lg:pt-16 pb-8 md:pb-12 lg:pb-16">
+  <div class="max-w-7xl mx-auto px-4 xl:px-0">
+    <div class="flex flex-col items-center">
+      {badge && (
+        <div
+          class="items-center justify-center rounded-full text-sm font-medium whitespace-nowrap shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] inline-flex bg-white text-neutral-700 px-2.5 py-1"
+        >
+          {badge}
+        </div>
+      )}
+      <div
+        class:list={[
+          "bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-semibold text-transparent sm:mx-auto sm:w-2/3 md:w-1/2 lg:text-4xl lg:leading-tight xl:w-2/5",
+          badge ? "mt-6 lg:mt-9" : ""
+        ]}
+      >
+        {title}
+      </div>
+      <p
+        class="text-sm font-medium text-slate-600 leading-normal lg:leading-normal lg:text-base mt-4 text-center sm:mx-auto sm:w-2/3 md:w-1/2 xl:w-2/5"
+      >
+        {description}
+      </p>
+    </div>
+
+    <!-- Video Player Section -->
+    <div class="mt-9 lg:mt-12 relative max-w-4xl mx-auto">
+      <!-- Gradient border wrapper -->
+      <div class="p-1 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600">
+        <div class="relative rounded-xl overflow-hidden shadow-2xl bg-neutral-900 video-container">
+          <!-- Video Element -->
+          <video
+            class="showcase-video w-full h-auto block"
+            muted
+            playsinline
+          >
+            <source src={videoUrl} type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Play Control Button -->
+          <button
+            class="play-control absolute bottom-4 right-4 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            aria-label="Play control"
+          >
+            <!-- Pause Icon (Playing state) -->
+            <svg class="pause-icon w-5 h-5 text-slate-700" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+            </svg>
+
+            <!-- Replay Icon (Ended state) -->
+            <svg class="replay-icon w-6 h-6 text-slate-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initVideoPlayers() {
+    const containers = document.querySelectorAll('.video-container');
+
+    containers.forEach((container) => {
+      const video = container.querySelector('.showcase-video') as HTMLVideoElement;
+      const playControl = container.querySelector('.play-control') as HTMLButtonElement;
+      const pauseIcon = container.querySelector('.pause-icon') as HTMLElement;
+      const replayIcon = container.querySelector('.replay-icon') as HTMLElement;
+
+      if (!video || !playControl || !pauseIcon || !replayIcon) return;
+
+      // Auto play on load
+      const attemptAutoPlay = async () => {
+        try {
+          await video.play();
+          pauseIcon.classList.remove('hidden');
+          replayIcon.classList.add('hidden');
+        } catch (error) {
+          console.log('Auto-play prevented by browser:', error);
+          pauseIcon.classList.add('hidden');
+          replayIcon.classList.remove('hidden');
+        }
+      };
+
+      // Handle video ended
+      video.addEventListener('ended', () => {
+        pauseIcon.classList.add('hidden');
+        replayIcon.classList.remove('hidden');
+      });
+
+      // Handle play control button click
+      playControl.addEventListener('click', async () => {
+        if (video.ended || video.paused) {
+          video.currentTime = 0;
+          try {
+            await video.play();
+            pauseIcon.classList.remove('hidden');
+            replayIcon.classList.add('hidden');
+          } catch (error) {
+            console.error('Error playing video:', error);
+          }
+        } else {
+          video.pause();
+          pauseIcon.classList.add('hidden');
+          replayIcon.classList.remove('hidden');
+        }
+      });
+
+      // Handle play event
+      video.addEventListener('play', () => {
+        pauseIcon.classList.remove('hidden');
+        replayIcon.classList.add('hidden');
+      });
+
+      // Handle pause event
+      video.addEventListener('pause', () => {
+        if (!video.ended) {
+          pauseIcon.classList.add('hidden');
+          replayIcon.classList.remove('hidden');
+        }
+      });
+
+      // Start auto-play attempt
+      attemptAutoPlay();
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initVideoPlayers);
+
+  // Re-initialize after page transitions (for SPAs)
+  document.addEventListener('astro:page-load', initVideoPlayers);
+</script>
