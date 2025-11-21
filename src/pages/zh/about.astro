@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout>
+  <div class="bg-white min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-slate-50 to-white pt-24 lg:pt-32 pb-12 lg:pb-16">
+      <div class="max-w-7xl mx-auto px-4 xl:px-0">
+        <div class="max-w-3xl mx-auto text-center">
+          <div
+            class="items-center justify-center rounded-full text-sm font-medium whitespace-nowrap shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] inline-flex bg-slate-900 text-white px-2.5 py-1"
+          >
+            关于我们
+          </div>
+          <h1
+            class="mt-6 bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-4xl font-semibold text-transparent lg:text-5xl lg:leading-tight"
+          >
+            让 Shopify 翻译更快更简单
+          </h1>
+          <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+            我们的使命是帮助 Shopify 商家在全球扩展业务，无需受困于翻译瓶颈。我们的 Chrome 扩展将 AI 驱动的翻译直接集成到 Shopify 的 Translate & Adapt 中，节省数小时的手工操作时间。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-12 lg:py-16">
+      <div class="max-w-7xl mx-auto px-4 xl:px-0">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 mb-6">
+              我们的故事
+            </h2>
+            <div class="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                在管理多个跨语言 Shopify 店铺的过程中，我们深切体会到复制文本、切换翻译工具、再粘贴回来的痛苦。这些重复性工作每天都要耗费数小时。
+              </p>
+              <p>
+                我们知道一定有更好的方法。因此我们开发了这个 Chrome 扩展，它无缝集成到 Shopify 原生的 Translate & Adapt 界面中，只需点击一次即可实现 AI 即时翻译。
+              </p>
+              <p>
+                如今，我们帮助 Shopify 商家将翻译速度提升 5 倍，支持 60 多种语言，翻译质量媲美专业译者。
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="p-1 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-blue-600">
+              <div class="bg-white rounded-xl p-8 lg:p-12">
+                <div class="space-y-8">
+                  <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-semibold text-slate-900 mb-2">5 倍速翻译</h3>
+                      <p class="text-slate-600">一键完成，无需五个步骤</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-semibold text-slate-900 mb-2">60+ 种语言</h3>
+                      <p class="text-slate-600">全面的语言支持助您走向全球</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-semibold text-slate-900 mb-2">无冲突</h3>
+                      <p class="text-slate-600">与 Shopify 界面原生集成</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="bg-slate-50 py-12 lg:py-16">
+      <div class="max-w-7xl mx-auto px-4 xl:px-0">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 mb-4">
+            我们的价值观
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            指导我们构建产品的核心原则
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">速度优先</h3>
+            <p class="text-slate-600">
+              我们相信商家应该把时间花在发展业务上，而不是复制粘贴翻译内容。
+            </p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">质量至上</h3>
+            <p class="text-slate-600">
+              专为电商优化的 AI 翻译，质量媲美专业译者。
+            </p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">简单集成</h3>
+            <p class="text-slate-600">
+              无需笨重的应用或冲突。与 Shopify 原生工具无缝集成。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-24">
+      <div class="max-w-4xl mx-auto px-4 xl:px-0 text-center">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-slate-900 mb-6">
+          准备好体验 5 倍速翻译了吗？
+        </h2>
+        <p class="text-lg text-slate-600 mb-8">
+          加入使用 yahao translate 全球扩展业务的商家行列
+        </p>
+        <a
+          href="#"
+          class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] bg-slate-900 text-white hover:bg-slate-800 disabled:bg-slate-900/30 disabled:text-slate-50/70 px-6 py-3 rounded-xl"
+        >
+          {t('hero.try_free')}
+          <span class="ml-1 text-slate-400"> - {t('hero.try_days')}</span>
+          <svg
+            class="shrink-0 ml-2 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+  <Footer />
+</BaseLayout>
